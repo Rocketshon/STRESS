@@ -1,7 +1,6 @@
-# OCRB — Orbital Compute Readiness Benchmark (v0.2)
+# STRESS — System Threat Resilience & Extreme Stress Suite (v0.2)
 
-OCRB is a deterministic, stress-driven benchmark for evaluating
-system resilience under extreme operational constraints.
+STRESS is a reliability benchmarking framework designed to evaluate how computational workloads behave when foundational operating assumptions are violated by environmental and systemic constraints. Unlike terrestrial benchmarks—which typically assume continuous power, stable connectivity, and rare environmental disruption—STRESS focuses on resilience and behavioral stability under persistent stress, rather than performance optimization, throughput, or cost efficiency.
 
 ## Status
 - Specification: Frozen (v0.2)
@@ -10,7 +9,7 @@ system resilience under extreme operational constraints.
 
 ## What This Repo Contains
 - `/Docs` — Normative specification and implementation guide
-- `/OCRB` — Reference implementation
+- `/stress` — Reference implementation
 - `/Examples` — Minimal usage examples
 - `/Tests` — Validation and sanity checks
 
@@ -21,7 +20,7 @@ system resilience under extreme operational constraints.
 
 ## Running a Benchmark
 ```python
-from OCRB.runner import run_benchmark
+from stress.runner import run_benchmark
 
 run_benchmark(
     out_dir="report",

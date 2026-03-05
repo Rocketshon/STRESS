@@ -1,18 +1,18 @@
 ---
 
-# OCRB v0 — Implementation Guide
+# STRESS v0 — Implementation Guide
 
 **Version:** 0.1
 **Status:** Informative (Normative-adjacent)
-**Applies To:** OCRB v0
+**Applies To:** STRESS v0
 
 ---
 
 ## 1. Purpose of This Guide
 
-This document defines how to implement the Orbital Compute Readiness Benchmark (OCRB) v0 in a manner that is compliant with the normative specifications.
+This document defines how to implement the System Threat Resilience & Extreme Stress Suite (STRESS) v0 in a manner that is compliant with the normative specifications.
 
-Its purpose is to translate the OCRB v0 standard into concrete implementation guidance **without reinterpreting, extending, or optimizing the benchmark**. This guide exists to prevent ambiguity, metric drift, and incompatible implementations prior to the development of reference code.
+Its purpose is to translate the STRESS v0 standard into concrete implementation guidance **without reinterpreting, extending, or optimizing the benchmark**. This guide exists to prevent ambiguity, metric drift, and incompatible implementations prior to the development of reference code.
 
 This guide:
 
@@ -23,25 +23,25 @@ This guide:
 
 This guide does **not**:
 
-* Modify or extend the OCRB v0 specification
+* Modify or extend the STRESS v0 specification
 * Introduce new metrics, stress parameters, or workloads
 * Provide optimization advice or performance tuning guidance
 * Define deployment, monitoring, or operational practices
 
 All normative authority remains with:
 
-* **OCRB_v0_Technical_Brief.md**
-* **OCRB_v0_Complete_Specification.md**
-* **OCRB_v0_Reference_Workloads.md**
-* **OCRB_v0_Reference_Stress_Profiles.md**
+* **STRESS_v0_Technical_Brief.md**
+* **STRESS_v0_Complete_Specification.md**
+* **STRESS_v0_Reference_Workloads.md**
+* **STRESS_v0_Reference_Stress_Profiles.md**
 
 ---
 
 ## 2. Conformance Model
 
-### 2.1 What “OCRB v0–Compliant” Means
+### 2.1 What “STRESS v0–Compliant” Means
 
-An implementation is considered **OCRB v0–compliant** if and only if it:
+An implementation is considered **STRESS v0–compliant** if and only if it:
 
 1. Implements all required Behavioral Proxies
    *(Complete Specification §4)*
@@ -58,13 +58,13 @@ An implementation is considered **OCRB v0–compliant** if and only if it:
 5. Meets all reproducibility and statistical reporting requirements
    *(Complete Specification §5.2, §6)*
 
-Compliance is **binary**, not graded. Partial implementations MUST explicitly declare non-compliance and MUST NOT present results as OCRB v0 scores.
+Compliance is **binary**, not graded. Partial implementations MUST explicitly declare non-compliance and MUST NOT present results as STRESS v0 scores.
 
 ---
 
 ### 2.2 Required vs Optional Components
 
-**Required for OCRB v0 compliance:**
+**Required for STRESS v0 compliance:**
 
 * Stress injection capability for SR-1 through SR-5
 * A workload execution harness implementing declared workloads
@@ -76,7 +76,7 @@ Compliance is **binary**, not graded. Partial implementations MUST explicitly de
 
 * Internal architectural choices
 * Choice of programming language or runtime
-* Auxiliary visualization or reporting layers external to OCRB results
+* Auxiliary visualization or reporting layers external to STRESS results
 
 Optional components MUST NOT influence benchmark behavior, measurement, or reported metrics.
 
@@ -103,13 +103,13 @@ Optional components MUST NOT influence benchmark behavior, measurement, or repor
 * Dynamically reallocating resources based on observed proxy values
 * Learning from previous benchmark runs to optimize behavior in a current run
 
-Any such behavior invalidates OCRB v0 compliance, even if results appear reproducible.
+Any such behavior invalidates STRESS v0 compliance, even if results appear reproducible.
 
 ---
 
 ## 3. High-Level System Architecture
 
-OCRB v0 implementations SHOULD be structured around the following logical components. These components describe **responsibilities**, not prescribed software modules or deployment units.
+STRESS v0 implementations SHOULD be structured around the following logical components. These components describe **responsibilities**, not prescribed software modules or deployment units.
 
 ### 3.1 Core Logical Modules
 
@@ -169,15 +169,15 @@ This guide makes no assumptions about:
 * Virtualization or containerization
 * Cloud, on-prem, or hybrid environments
 
-OCRB v0 is **environment-parameterized**, not environment-specific.
+STRESS v0 is **environment-parameterized**, not environment-specific.
 
 ---
 
 ## 4. Stress Injector Implementation
 
-This section defines implementation requirements for applying OCRB v0 stress parameters (SR-1 through SR-5) in a reproducible, externally imposed manner.
+This section defines implementation requirements for applying STRESS v0 stress parameters (SR-1 through SR-5) in a reproducible, externally imposed manner.
 
-Stress injection in OCRB v0 represents **computational pressure abstractions**, not physical simulation. Implementations MUST focus on observable behavioral impact rather than environmental fidelity.
+Stress injection in STRESS v0 represents **computational pressure abstractions**, not physical simulation. Implementations MUST focus on observable behavioral impact rather than environmental fidelity.
 
 Stress injection MUST NOT:
 - alter workload semantics,
@@ -201,7 +201,7 @@ A valid stress regime declaration MUST include:
 - Random seed(s) used for stochastic processes
 
 Stress regime declarations MUST be immutable for the duration of a run.  
-Any modification after workload start invalidates the run for OCRB reporting.
+Any modification after workload start invalidates the run for STRESS reporting.
 
 Stress regimes MUST be disclosed verbatim alongside all reported ORI results.
 
@@ -209,7 +209,7 @@ Stress regimes MUST be disclosed verbatim alongside all reported ORI results.
 
 ### 4.2 Determinism and Seed Management
 
-OCRB-compliant stress injection MUST be reproducible.
+STRESS-compliant stress injection MUST be reproducible.
 
 - Any stochastic stress process MUST use a seeded pseudorandom generator.
 - Each independent run MUST use independent seed values.
@@ -221,7 +221,7 @@ Implementations MUST ensure that:
 - stress schedules can be replayed deterministically from declared parameters and seed values,
 - time references used for scheduling are consistent and documented.
 
-Use of non-deterministic entropy sources (e.g., system time, hardware RNGs) without controlled seeding invalidates OCRB compliance.
+Use of non-deterministic entropy sources (e.g., system time, hardware RNGs) without controlled seeding invalidates STRESS compliance.
 
 ---
 
@@ -254,7 +254,7 @@ Failure to declare stress window behavior invalidates reproducibility.
 
 ### 4.4 Stress Parameter Realization Requirements
 
-This subsection defines implementation-level requirements for each OCRB v0 stress parameter. These requirements specify **what must be achieved**, not how it must be engineered.
+This subsection defines implementation-level requirements for each STRESS v0 stress parameter. These requirements specify **what must be achieved**, not how it must be engineered.
 
 ---
 
@@ -367,7 +367,7 @@ Undeclared interaction effects invalidate comparability.
 
 ### 4.6 Invalid Stress Injection Patterns
 
-The following patterns invalidate OCRB v0 compliance:
+The following patterns invalidate STRESS v0 compliance:
 - adaptive stress intensity based on observed workload behavior,
 - stress schedules that change mid-run without declaration,
 - injection mechanisms that introspect workload internals,
@@ -380,7 +380,7 @@ Stressors MUST NOT observe, infer, or respond to workload behavior.
 
 ## 5. Workload Execution and Measurement
 
-This section defines how OCRB v0 workloads MUST be executed and how measurements MUST be collected in order to compute Behavioral Proxies accurately and comparably.
+This section defines how STRESS v0 workloads MUST be executed and how measurements MUST be collected in order to compute Behavioral Proxies accurately and comparably.
 
 Workload execution and measurement are strictly **observational**. Implementations MUST NOT alter workload behavior for the purpose of measurement, nor introduce instrumentation that materially affects workload execution.
 
@@ -394,7 +394,7 @@ Declared workloads (W1, W2, W3) MUST be executed without semantic modification.
 - Error handling, retries, or fallback behavior MUST be intrinsic to the workload definition.
 - Benchmark harnesses MUST NOT inject compensating behavior on behalf of the workload.
 
-Any modification to workload semantics invalidates comparability and OCRB v0 compliance.
+Any modification to workload semantics invalidates comparability and STRESS v0 compliance.
 
 ---
 
@@ -553,7 +553,7 @@ Measurement MUST NOT assume global state visibility.
 
 ### 5.9 Invalid Measurement Patterns
 
-The following patterns invalidate OCRB v0 compliance:
+The following patterns invalidate STRESS v0 compliance:
 - modifying workloads to expose additional measurement hooks,
 - suppressing error signals for measurement convenience,
 - inferring internal state not observable to the workload,
@@ -565,7 +565,7 @@ Measurement exists to **observe behavior**, not to modify or filter it.
 
 ## 6. Metric Calculation and ORI Computation
 
-This section defines how Behavioral Proxies (BP-1 through BP-5) MUST be computed and how they are aggregated into the Orbital Reliability Index (ORI), in strict accordance with the OCRB v0 Complete Specification.
+This section defines how Behavioral Proxies (BP-1 through BP-5) MUST be computed and how they are aggregated into the Orbital Reliability Index (ORI), in strict accordance with the STRESS v0 Complete Specification.
 
 Metric computation MUST be:
 - deterministic given declared inputs,
@@ -573,7 +573,7 @@ Metric computation MUST be:
 - reproducible across independent implementations,
 - auditable after execution.
 
-Metric definitions in this section are **interpretive bindings** to the normative formulas defined in the Complete Specification. No alternate formulations are permitted for OCRB v0 compliance.
+Metric definitions in this section are **interpretive bindings** to the normative formulas defined in the Complete Specification. No alternate formulations are permitted for STRESS v0 compliance.
 
 ---
 
@@ -740,7 +740,7 @@ CFR = 1 - (C_local / C_total)
 
 The Orbital Reliability Index (ORI) is computed as a weighted aggregate of the five Behavioral Proxies.
 
-**Canonical OCRB v0 weighting:**
+**Canonical STRESS v0 weighting:**
 - Equal weights for all proxies.
 
 **Formula:**
@@ -752,8 +752,8 @@ ORI = (GDS + ARR + IST + REC + CFR) / 5
 
 **Alternate Weightings:**
 - Alternate weighting schemes MAY be explored for research purposes.
-- Alternate-weighted scores MUST NOT be labeled as “OCRB v0 ORI”.
-- Canonical equal-weighted ORI MUST always be computed and reported for OCRB v0 compliance.
+- Alternate-weighted scores MUST NOT be labeled as “STRESS v0 ORI”.
+- Canonical equal-weighted ORI MUST always be computed and reported for STRESS v0 compliance.
 
 ---
 
@@ -775,7 +775,7 @@ No run may be excluded without explicit disclosure and justification.
 
 ### 6.9 Invalid Metric Practices
 
-The following practices invalidate OCRB v0 compliance:
+The following practices invalidate STRESS v0 compliance:
 - redefining proxy formulas,
 - smoothing or filtering metrics to improve appearance,
 - discarding outlier runs without disclosure,
@@ -787,20 +787,20 @@ Metrics exist to **represent behavior**, not to optimize perception.
 
 ## 7. Reporting, Disclosure, and Reproducibility
 
-This section defines the mandatory reporting artifacts and disclosure requirements for OCRB v0 results.
+This section defines the mandatory reporting artifacts and disclosure requirements for STRESS v0 results.
 
-OCRB v0 results are only valid if they are:
+STRESS v0 results are only valid if they are:
 - reproducible by an independent party,
 - auditable after execution,
 - fully parameterized and disclosed.
 
-Any result that cannot be independently reconstructed from its report MUST NOT be presented as an OCRB v0 score.
+Any result that cannot be independently reconstructed from its report MUST NOT be presented as an STRESS v0 score.
 
 ---
 
 ### 7.1 Required Output Artifacts
 
-Each OCRB v0 benchmark execution MUST produce the following artifacts:
+Each STRESS v0 benchmark execution MUST produce the following artifacts:
 
 1. **Run Manifest**
 2. **Per-Run Metric Record(s)**
@@ -820,7 +820,7 @@ The Run Manifest captures the immutable configuration of a benchmark execution.
 Each Run Manifest MUST include:
 
 **Benchmark Identification**
-- OCRB version (e.g., v0)
+- STRESS version (e.g., v0)
 - Complete Specification version
 - Implementation Guide version
 - Date/time of execution (UTC)
@@ -929,9 +929,9 @@ If any runs are excluded for any reason:
 
 ### 7.5 Disclosure Statement
 
-Each OCRB v0 report MUST include a disclosure statement containing:
+Each STRESS v0 report MUST include a disclosure statement containing:
 
-- Confirmation that the implementation follows OCRB v0 normative specifications
+- Confirmation that the implementation follows STRESS v0 normative specifications
 - Declaration of any implementation-defined behaviors
 - Declaration of any proxies reported as N/A and why
 - Confirmation that no adaptive behavior occurred during execution
@@ -944,7 +944,7 @@ Disclosure statements MUST be explicit. Silence is not acceptable.
 
 ### 7.6 Reproducibility Requirements
 
-A reported OCRB v0 result MUST be reproducible by an independent party given:
+A reported STRESS v0 result MUST be reproducible by an independent party given:
 
 - The Run Manifest
 - The workload specification and parameters
@@ -964,23 +964,23 @@ If reproduction requires proprietary components, this MUST be disclosed.
 
 ### 7.7 Invalid Reporting Patterns
 
-The following invalidate OCRB v0 compliance:
+The following invalidate STRESS v0 compliance:
 
 - Reporting ORI without per-proxy values and supporting per-run records
 - Reporting aggregated results without per-run metric records
 - Omitting seeds, stress parameters, or stress intensity levels (when applicable)
 - Renaming or reinterpreting Behavioral Proxies
-- Presenting experimental metrics as OCRB v0 scores
+- Presenting experimental metrics as STRESS v0 scores
 - Selective reporting of favorable runs
 - Computing ORI from runs where any proxy is N/A without explicit disclosure
 
-Results that violate these constraints MUST NOT be labeled as OCRB v0.
+Results that violate these constraints MUST NOT be labeled as STRESS v0.
 
 ---
 
 ### 7.8 Reference Report Structure (Non-Normative)
 
-A typical OCRB v0 report MAY be structured as:
+A typical STRESS v0 report MAY be structured as:
 
 /report
 ├── manifest.yaml

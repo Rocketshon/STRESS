@@ -1,16 +1,16 @@
-# Orbital Compute Readiness Benchmark (OCRB) v0
+# System Threat Resilience & Extreme Stress Suite (STRESS) v0
 
 ## Complete Specification
 
 **Version:** 0.1  
 **Status:** Technical Specification  
-**Related Document:** OCRB_v0_Technical_Brief.md  
+**Related Document:** STRESS_v0_Technical_Brief.md  
 
 ---
 
 ## 1. Scope of This Specification
 
-This document defines the **normative measurement methodology** for OCRB v0.
+This document defines the **normative measurement methodology** for STRESS v0.
 
 It specifies:
 
@@ -20,10 +20,10 @@ It specifies:
 - Statistical requirements for reproducibility
 - Explicit interpretation constraints
 
-This document is **authoritative** for OCRB v0.  
-Any implementation claiming OCRB v0 compliance **MUST** conform to this specification.
+This document is **authoritative** for STRESS v0.  
+Any implementation claiming STRESS v0 compliance **MUST** conform to this specification.
 
-While OCRB is orbital-first in motivation, all definitions in this specification are **environment-agnostic** and apply to any constrained computational environment where foundational operating assumptions are violated.
+While STRESS is orbital-first in motivation, all definitions in this specification are **environment-agnostic** and apply to any constrained computational environment where foundational operating assumptions are violated.
 
 ---
 
@@ -193,7 +193,7 @@ Let weights **wⱼ** satisfy:
 
 ```
 
-Canonical OCRB v0 weighting uses equal weights:
+Canonical STRESS v0 weighting uses equal weights:
 
 ```
 
@@ -201,7 +201,7 @@ ORI = (1 / 5) × Σ BPⱼ
 
 ```
 
-Alternate weightings **MAY** be used for exploratory analysis but **MUST NOT** be presented as canonical OCRB scores.
+Alternate weightings **MAY** be used for exploratory analysis but **MUST NOT** be presented as canonical STRESS scores.
 
 ---
 
@@ -219,7 +219,7 @@ The statistical method used **MUST** be documented.
 
 ## 6. Reproducibility Requirements
 
-An OCRB-compliant result **MUST** include:
+An STRESS-compliant result **MUST** include:
 
 - Full stress regime definition
 - Workload specification
@@ -231,7 +231,7 @@ An OCRB-compliant result **MUST** include:
 
 ## 7. Interpretation Constraints
 
-OCRB scores **MUST NOT** be used to:
+STRESS scores **MUST NOT** be used to:
 
 - Predict real-world system failure rates
 - Certify systems for deployment
@@ -244,7 +244,7 @@ ORI values are comparative indicators **only within declared constraints**.
 
 ## 8. Versioning and Extension Rules
 
-- OCRB v0 Behavioral Proxy definitions are immutable
+- STRESS v0 Behavioral Proxy definitions are immutable
 - New stress parameters require a major version increment
 - New reference stress regimes MAY be added in minor versions
 - Weighting changes **MUST NOT** alter v0 canonical scores
@@ -262,9 +262,9 @@ Any implementation deviating from this specification **MUST** document deviation
 
 ## 10. Summary
 
-OCRB v0 provides a behaviorally grounded, statistically reproducible framework for evaluating computational resilience when foundational assumptions no longer hold.
+STRESS v0 provides a behaviorally grounded, statistically reproducible framework for evaluating computational resilience when foundational assumptions no longer hold.
 
-This specification, together with the Technical Brief, defines the complete OCRB v0 standard.
+This specification, together with the Technical Brief, defines the complete STRESS v0 standard.
 
 ---
 

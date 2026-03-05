@@ -1,31 +1,31 @@
-# Orbital Compute Readiness Benchmark (OCRB) v0  
+# System Threat Resilience & Extreme Stress Suite (STRESS) v0  
 ## Reference Stress Profiles
 
 **Version:** 0.1  
 **Status:** Normative Specification  
 
 **Related Documents:**  
-- OCRB_v0_Technical_Brief.md  
-- OCRB_v0_Complete_Specification.md  
-- OCRB_v0_Reference_Workloads.md  
+- STRESS_v0_Technical_Brief.md  
+- STRESS_v0_Complete_Specification.md  
+- STRESS_v0_Reference_Workloads.md  
 
 ---
 
 ## 1. Purpose and Normative Status
 
-This document defines **normative reference stress profiles** for OCRB v0.
+This document defines **normative reference stress profiles** for STRESS v0.
 
-A stress profile is a concrete instantiation of the OCRB stress parameters (SR-1 through SR-5) used during benchmark execution.
+A stress profile is a concrete instantiation of the STRESS stress parameters (SR-1 through SR-5) used during benchmark execution.
 
-OCRB results are **invalid** unless stress profiles are explicitly declared and conform to this specification.
+STRESS results are **invalid** unless stress profiles are explicitly declared and conform to this specification.
 
-This document is **normative** for OCRB v0 stress profile definition and application.
+This document is **normative** for STRESS v0 stress profile definition and application.
 
 ---
 
 ## 2. Stress Profile Design Principles
 
-All OCRB stress profiles **MUST** satisfy the following:
+All STRESS stress profiles **MUST** satisfy the following:
 
 1. **Parameter Explicitness**  
    All stress parameters MUST be explicitly defined.
@@ -43,7 +43,7 @@ All OCRB stress profiles **MUST** satisfy the following:
 
 ## 3. Stress Profile Declaration Requirements
 
-Each OCRB execution **MUST** declare a stress profile containing:
+Each STRESS execution **MUST** declare a stress profile containing:
 
 - Stress Profile ID  
 - Values for SR-1 through SR-5  
@@ -131,9 +131,9 @@ Profiles **MUST** be immutable once versioned.
 
 ---
 
-## 5. Canonical OCRB v0 Stress Profiles
+## 5. Canonical STRESS v0 Stress Profiles
 
-OCRB v0 defines the following canonical stress profiles.
+STRESS v0 defines the following canonical stress profiles.
 
 ### 5.1 SP-0: Baseline (Control)
 
@@ -180,7 +180,7 @@ OCRB v0 defines the following canonical stress profiles.
 ### 5.4 Example Parameterization (Non-Normative)
 
 These example values are provided to clarify what “moderate” and “severe” can mean quantitatively.
-They are **not** canonical OCRB v0 requirements, and implementations MAY vary while maintaining profile intent.
+They are **not** canonical STRESS v0 requirements, and implementations MAY vary while maintaining profile intent.
 
 The key requirement is that any chosen parameterization is:
 - explicitly declared,
@@ -209,7 +209,7 @@ The key requirement is that any chosen parameterization is:
 - Stress profiles MUST be applied consistently across all runs  
 - Parameter changes invalidate comparisons  
 - Stress profiles MUST be disclosed alongside ORI results  
-- Combining profiles is NOT permitted in OCRB v0  
+- Combining profiles is NOT permitted in STRESS v0  
 
 ---
 
@@ -223,7 +223,7 @@ The key requirement is that any chosen parameterization is:
 
 ## 8. Interpretation Constraints
 
-- OCRB scores MUST NOT be compared across different stress profiles  
+- STRESS scores MUST NOT be compared across different stress profiles  
 - Stress profiles MUST NOT be interpreted as real environmental conditions  
 - Stress profiles are comparative tools only  
 
@@ -231,7 +231,7 @@ The key requirement is that any chosen parameterization is:
 
 ## 9. Summary
 
-Reference stress profiles define how pressure is applied within OCRB.
+Reference stress profiles define how pressure is applied within STRESS.
 
 They ensure resilience measurements are reproducible, interpretable, and comparable without relying on physical simulation or proprietary data.
 

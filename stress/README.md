@@ -1,15 +1,15 @@
-# OCRB Reference Implementation
+# STRESS Reference Implementation
 
 This directory will contain the reference implementation of the
-Orbital Compute Readiness Benchmark (OCRB).
+Orbital Compute Readiness Benchmark (STRESS).
 
 The reference implementation exists to:
-- Demonstrate a compliant realization of the OCRB v0 specification
+- Demonstrate a compliant realization of the STRESS v0 specification
 - Serve as an executable clarification of normative documents
 - Provide a reproducibility baseline for independent implementations
 
 ## Scope
-- Implements OCRB v0 as specified
+- Implements STRESS v0 as specified
 - Prioritizes correctness, transparency, and reproducibility
 - Does not optimize for performance or deployment
 

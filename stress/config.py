@@ -3,7 +3,7 @@ from typing import Dict, Optional
 import time
 import random
 
-OCRB_VERSION = "v0.2"
+STRESS_VERSION = "v0.2"
 COMPLETE_SPEC_VERSION = "v0.2"
 IMPLEMENTATION_GUIDE_VERSION = "v0.2"
 
@@ -19,7 +19,7 @@ class StressSeeds:
 
 @dataclass(frozen=True)
 class RunManifest:
-    ocrb_version: str
+    STRESS_version: str
     spec_version: str
     guide_version: str
     timestamp_utc: float
@@ -56,7 +56,7 @@ def create_manifest(
 ) -> RunManifest:
     seeds = generate_seeds(master_seed)
     return RunManifest(
-        ocrb_version=OCRB_VERSION,
+        STRESS_version=STRESS_VERSION,
         spec_version=COMPLETE_SPEC_VERSION,
         guide_version=IMPLEMENTATION_GUIDE_VERSION,
         timestamp_utc=time.time(),

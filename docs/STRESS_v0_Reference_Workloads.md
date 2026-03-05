@@ -1,19 +1,19 @@
-# Orbital Compute Readiness Benchmark (OCRB) v0
+# System Threat Resilience & Extreme Stress Suite (STRESS) v0
 ## Reference Workloads
 
 **Version:** 0.2  
 **Status:** Normative Specification  
 **Related Documents:**
-- OCRB_v0_Technical_Brief.md
-- OCRB_v0_Complete_Specification.md
+- STRESS_v0_Technical_Brief.md
+- STRESS_v0_Complete_Specification.md
 
 ---
 
 ## 1. Purpose and Normative Status
 
-This document defines normative reference workload classes and canonical workloads for OCRB v0.
+This document defines normative reference workload classes and canonical workloads for STRESS v0.
 
-OCRB results are invalid unless workloads are explicitly defined in accordance with this specification. This document is normative for OCRB v0 workload definition and execution.
+STRESS results are invalid unless workloads are explicitly defined in accordance with this specification. This document is normative for STRESS v0 workload definition and execution.
 
 Reference workloads provide:
 - A standardized basis for comparative evaluation
@@ -24,7 +24,7 @@ Reference workloads provide:
 
 ## 2. Workload Design Principles
 
-All OCRB reference workloads MUST satisfy the following:
+All STRESS reference workloads MUST satisfy the following:
 
 1. **Deterministic Baseline Behavior**  
    Under baseline (unstressed) conditions, workloads MUST complete correctly and reproducibly.
@@ -42,7 +42,7 @@ All OCRB reference workloads MUST satisfy the following:
 
 ## 3. Workload Declaration Requirements
 
-Each OCRB workload execution MUST include an explicit workload declaration containing:
+Each STRESS workload execution MUST include an explicit workload declaration containing:
 - Workload ID and class
 - Input size and distribution
 - Concurrency level
@@ -50,13 +50,13 @@ Each OCRB workload execution MUST include an explicit workload declaration conta
 - Execution duration or completion criteria
 - Failure classification rules (recoverable vs irreversible)
 
-Failure classification MUST conform to OCRB_v0_Complete_Specification §4.2.
+Failure classification MUST conform to STRESS_v0_Complete_Specification §4.2.
 
 ---
 
-## 4. Workload Classes (OCRB v0)
+## 4. Workload Classes (STRESS v0)
 
-OCRB v0 defines three normative workload classes. Results MUST NOT be compared across classes.
+STRESS v0 defines three normative workload classes. Results MUST NOT be compared across classes.
 
 ### 4.1 Class W1 — Stateless Task Processing
 
@@ -124,9 +124,9 @@ Multiple cooperating components requiring coordination to achieve progress.
 
 ---
 
-## 5. Canonical OCRB v0 Workloads
+## 5. Canonical STRESS v0 Workloads
 
-OCRB v0 defines the following canonical workloads:
+STRESS v0 defines the following canonical workloads:
 
 | ID   | Class | Description |
 |------|-------|-------------|
@@ -135,7 +135,7 @@ OCRB v0 defines the following canonical workloads:
 | W3-A | W3    | Leader election with heartbeat and timeout parameters |
 
 **Mandatory Requirement**  
-Implementations claiming OCRB v0 compliance MUST support W1-A.
+Implementations claiming STRESS v0 compliance MUST support W1-A.
 
 Cross-implementation comparisons require identical workload IDs and parameters.
 
@@ -162,7 +162,7 @@ Observable signals SHOULD be derivable from external interfaces (e.g., exit code
 ---
 
 ## 8. Interpretation Constraints
-- OCRB scores MUST NOT be compared across different workload classes.
+- STRESS scores MUST NOT be compared across different workload classes.
 - Workload ID and parameters MUST be disclosed alongside ORI results.
 - Optimizing systems specifically for a workload MUST be disclosed.
 
@@ -170,9 +170,9 @@ Observable signals SHOULD be derivable from external interfaces (e.g., exit code
 
 ## 9. Summary
 
-Reference workloads ground OCRB’s behavioral metrics in observable execution behavior.
+Reference workloads ground STRESS’s behavioral metrics in observable execution behavior.
 
-They ensure OCRB evaluates resilience under constraint rather than abstract capability, and that results remain reproducible, interpretable, and comparable across implementations.
+They ensure STRESS evaluates resilience under constraint rather than abstract capability, and that results remain reproducible, interpretable, and comparable across implementations.
 
 ---
 
