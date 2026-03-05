@@ -8,11 +8,13 @@ def test_sri_computation():
     log.emit(EventType.RUN_END)
 
     sri = compute_sri(
-        gds=1.0,
-        arr=1.0,
-        ist=1.0,
-        rec=1.0,
-        cfr=1.0,
+        proxies={
+            "gds": 1.0,
+            "arr": 1.0,
+            "ist": 1.0,
+            "rec": 1.0,
+            "cfr": 1.0,
+        }
     )
 
     assert sri.sri == 1.0

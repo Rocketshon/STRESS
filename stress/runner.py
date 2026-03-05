@@ -3,32 +3,32 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Any, Dict, List, Optional, Tuple
 
-from STRESS.config import create_manifest
-from STRESS.measure.events import EventLog, EventType, FailureClass
-from STRESS.workloads.w1_stateless import run_w1a
-from STRESS.workloads.w2_stateful_pipeline import run_w2a, W2AConfig
+from stress.config import create_manifest
+from stress.measure.events import EventLog, EventType, FailureClass
+from stress.workloads.w1_stateless import run_w1a
+from stress.workloads.w2_stateful_pipeline import run_w2a, W2AConfig
 from pathlib import Path
-from STRESS.metrics.arr import compute_arr
-from STRESS.metrics.cfr import compute_cfr
-from STRESS.metrics.gds import compute_gds
-from STRESS.metrics.ist import compute_ist
-from STRESS.metrics.rec import compute_rec
+from stress.metrics.arr import compute_arr
+from stress.metrics.cfr import compute_cfr
+from stress.metrics.gds import compute_gds
+from stress.metrics.ist import compute_ist
+from stress.metrics.rec import compute_rec
 from stress.metrics.sri import compute_sri
 
-from STRESS.report.schema import (
+from stress.report.schema import (
     RunRecord,
     ProxyEvidence,
     ProxyValues,
     AggregateStats,
     AggregateSummary,
 )
-from STRESS.report.writer import (
+from stress.report.writer import (
     write_manifest,
     write_run_record,
     write_aggregate_summary,
     write_disclosure,
 )
-from STRESS.stats.aggregate import summarize
+from stress.stats.aggregate import summarize
 
 
 def run_benchmark(
