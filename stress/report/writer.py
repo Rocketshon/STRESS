@@ -6,7 +6,7 @@ from dataclasses import is_dataclass, asdict
 from enum import Enum
 from typing import Any, Dict
 
-from OCRB.report.schema import RunRecord, AggregateSummary, to_dict
+from stress.report.schema import RunRecord, AggregateSummary, to_dict
 
 
 def _jsonify(obj: Any) -> Any:

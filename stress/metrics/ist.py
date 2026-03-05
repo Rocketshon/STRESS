@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Optional
 
-from OCRB.measure.events import Event, EventType, FailureClass
+from stress.measure.events import Event, EventType, FailureClass
 
 
 @dataclass(frozen=True)

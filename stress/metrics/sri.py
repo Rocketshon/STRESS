@@ -5,25 +5,25 @@ from typing import Dict, Optional
 
 
 @dataclass(frozen=True)
-class ORIResult:
-    ori: Optional[float]
+class SRIResult:
+    sri: Optional[float]
     weights: Dict[str, float]
     na_reason: Optional[str] = None
 
 
-def compute_ori(
+def compute_sri(
     proxies: Dict[str, Optional[float]],
     weights: Optional[Dict[str, float]] = None,
-) -> ORIResult:
+) -> SRIResult:
     """
-    ORI is the weighted aggregate of the five behavioral proxies.
+    SRI is the weighted aggregate of the five behavioral proxies.
     v0 default: equal weights.
 
     Proxies expected keys:
       gds, arr, ist, rec, cfr
 
     Rule:
-      If any required proxy is N/A, ORI is N/A (must be disclosed).
+      If any required proxy is N/A, SRI is N/A (must be disclosed).
       (This keeps comparability intact.)
     """
     if weights is None:
@@ -31,16 +31,16 @@ def compute_ori(
 
     missing = [k for k in weights.keys() if k not in proxies]
     if missing:
-        return ORIResult(ori=None, weights=weights, na_reason=f"missing proxies: {missing}")
+        return SRIResult(sri=None, weights=weights, na_reason=f"missing proxies: {missing}")
 
     na = [k for k in weights.keys() if proxies.get(k) is None]
     if na:
-        return ORIResult(ori=None, weights=weights, na_reason=f"ORI N/A because proxies N/A: {na}")
+        return SRIResult(sri=None, weights=weights, na_reason=f"SRI N/A because proxies N/A: {na}")
 
-    ori = 0.0
+    sri = 0.0
     for k, w in weights.items():
-        ori += float(proxies[k]) * float(w)
+        sri += float(proxies[k]) * float(w)
 
     # Numerical guardrail
-    ori = max(0.0, min(1.0, ori))
-    return ORIResult(ori=ori, weights=weights, na_reason=None)
+    sri = max(0.0, min(1.0, sri))
+    return SRIResult(sri=sri, weights=weights, na_reason=None)

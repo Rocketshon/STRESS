@@ -36,7 +36,7 @@ class ProxyValues:
     ist: Optional[float] = None
     rec: Optional[float] = None
     cfr: Optional[float] = None
-    ori: Optional[float] = None
+    sri: Optional[float] = None
 
 
 @dataclass(frozen=True)
@@ -70,13 +70,13 @@ class AggregateStats:
 
 @dataclass(frozen=True)
 class AggregateSummary:
-    # Per proxy + ORI
+    # Per proxy + SRI
     gds: AggregateStats
     arr: AggregateStats
     ist: AggregateStats
     rec: AggregateStats
     cfr: AggregateStats
-    ori: AggregateStats
+    sri: AggregateStats
 
 
 def to_dict(obj: Any) -> Dict[str, Any]:

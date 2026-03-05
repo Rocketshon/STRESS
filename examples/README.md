@@ -1,11 +1,11 @@
-# OCRB Examples
+# STRESS Examples
 
 This directory will contain example workload definitions,
 stress configurations, and execution setups illustrating
-how OCRB v0 may be applied.
+how STRESS v0 may be applied.
 
 ## Purpose
-- Help new users understand how to run OCRB-compliant evaluations
+- Help new users understand how to run STRESS-compliant evaluations
 - Provide concrete, non-normative examples
 - Demonstrate correct configuration and disclosure practices
 

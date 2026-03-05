@@ -13,7 +13,7 @@ from STRESS.metrics.cfr import compute_cfr
 from STRESS.metrics.gds import compute_gds
 from STRESS.metrics.ist import compute_ist
 from STRESS.metrics.rec import compute_rec
-from STRESS.metrics.ori import compute_ori
+from stress.metrics.sri import compute_sri
 
 from STRESS.report.schema import (
     RunRecord,
@@ -72,7 +72,7 @@ def run_benchmark(
     ist_series: List[Optional[float]] = []
     rec_series: List[Optional[float]] = []
     cfr_series: List[Optional[float]] = []
-    ori_series: List[Optional[float]] = []
+    sri_series: List[Optional[float]] = []
 
     # For REC, we need a baseline record. For now we generate a stub baseline.
     # Later: baseline runs should be actual SP-0 executions.
@@ -174,7 +174,7 @@ def run_benchmark(
             "rec": rec.rec,
             "cfr": cfr.cfr,
         }
-        ori = compute_ori(proxies)
+        sri = compute_sri(proxies)
 
         # Collect N/A reasons
         na_reasons: Dict[str, str] = {}
@@ -183,7 +183,7 @@ def run_benchmark(
         if ist.na_reason: na_reasons["ist"] = ist.na_reason
         if rec.na_reason: na_reasons["rec"] = rec.na_reason
         if cfr.na_reason: na_reasons["cfr"] = cfr.na_reason
-        if ori.na_reason: na_reasons["ori"] = ori.na_reason
+        if sri.na_reason: na_reasons["sri"] = sri.na_reason
 
         record = RunRecord(
             run_id=log.run_id,
@@ -197,7 +197,7 @@ def run_benchmark(
                 ist=ist.ist,
                 rec=rec.rec,
                 cfr=cfr.cfr,
-                ori=ori.ori,
+                sri=sri.sri,
             ),
             evidence=ProxyEvidence(
                 stress_levels=gds.stress_levels,
@@ -224,7 +224,7 @@ def run_benchmark(
         ist_series.append(ist.ist)
         rec_series.append(rec.rec)
         cfr_series.append(cfr.cfr)
-        ori_series.append(ori.ori)
+        sri_series.append(sri.sri)
 
     # Aggregate summaries
     def _agg(vals: List[Optional[float]]) -> AggregateStats:
@@ -241,7 +241,7 @@ def run_benchmark(
         ist=_agg(ist_series),
         rec=_agg(rec_series),
         cfr=_agg(cfr_series),
-        ori=_agg(ori_series),
+        sri=_agg(sri_series),
     )
     write_aggregate_summary(out_dir, summary)
 

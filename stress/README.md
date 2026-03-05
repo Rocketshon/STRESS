@@ -1,7 +1,7 @@
 # STRESS Reference Implementation
 
 This directory will contain the reference implementation of the
-Orbital Compute Readiness Benchmark (STRESS).
+System Threat Resilience & Extreme Stress Suite (STRESS).
 
 The reference implementation exists to:
 - Demonstrate a compliant realization of the STRESS v0 specification

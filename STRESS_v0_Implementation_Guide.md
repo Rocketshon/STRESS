@@ -52,7 +52,7 @@ An implementation is considered **STRESS v0–compliant** if and only if it:
 3. Executes declared workloads without semantic modification
    *(Reference Workloads §4–§6)*
 
-4. Computes the Orbital Reliability Index (ORI) using the canonical v0 aggregation rules
+4. Computes the Stress Resilience Index (SRI) using the canonical v0 aggregation rules
    *(Complete Specification §5)*
 
 5. Meets all reproducibility and statistical reporting requirements
@@ -69,7 +69,7 @@ Compliance is **binary**, not graded. Partial implementations MUST explicitly de
 * Stress injection capability for SR-1 through SR-5
 * A workload execution harness implementing declared workloads
 * Measurement and instrumentation sufficient to compute all five Behavioral Proxies
-* ORI calculation with canonical weighting and statistical reporting
+* SRI calculation with canonical weighting and statistical reporting
 * Full disclosure of parameters, seeds, and execution environment
 
 **Optional (non-normative):**
@@ -125,7 +125,7 @@ Observes externally visible signals required to compute Behavioral Proxies.
 **Metric Computation Engine**
 Computes normalized Behavioral Proxy scores (BP-1 through BP-5).
 
-**ORI Aggregation & Statistics Module**
+**SRI Aggregation & Statistics Module**
 Aggregates proxy scores, applies weights, and computes statistical summaries.
 
 **Reporting & Disclosure Output**
@@ -141,7 +141,7 @@ Stress Injection → Workload Execution → Measurement
                               ↓
                   Proxy Computation (BP-1…BP-5)
                               ↓
-                   ORI Aggregation & Statistics
+                   SRI Aggregation & Statistics
                               ↓
                      Reporting & Disclosure
 ```
@@ -203,7 +203,7 @@ A valid stress regime declaration MUST include:
 Stress regime declarations MUST be immutable for the duration of a run.  
 Any modification after workload start invalidates the run for STRESS reporting.
 
-Stress regimes MUST be disclosed verbatim alongside all reported ORI results.
+Stress regimes MUST be disclosed verbatim alongside all reported SRI results.
 
 ---
 
@@ -563,9 +563,9 @@ Measurement exists to **observe behavior**, not to modify or filter it.
 
 ---
 
-## 6. Metric Calculation and ORI Computation
+## 6. Metric Calculation and SRI Computation
 
-This section defines how Behavioral Proxies (BP-1 through BP-5) MUST be computed and how they are aggregated into the Orbital Reliability Index (ORI), in strict accordance with the STRESS v0 Complete Specification.
+This section defines how Behavioral Proxies (BP-1 through BP-5) MUST be computed and how they are aggregated into the Stress Resilience Index (SRI), in strict accordance with the STRESS v0 Complete Specification.
 
 Metric computation MUST be:
 - deterministic given declared inputs,
@@ -736,9 +736,9 @@ CFR = 1 - (C_local / C_total)
 
 ---
 
-### 6.7 ORI Aggregation
+### 6.7 SRI Aggregation
 
-The Orbital Reliability Index (ORI) is computed as a weighted aggregate of the five Behavioral Proxies.
+The Stress Resilience Index (SRI) is computed as a weighted aggregate of the five Behavioral Proxies.
 
 **Canonical STRESS v0 weighting:**
 - Equal weights for all proxies.
@@ -746,14 +746,14 @@ The Orbital Reliability Index (ORI) is computed as a weighted aggregate of the f
 **Formula:**
 ```
 
-ORI = (GDS + ARR + IST + REC + CFR) / 5
+SRI = (GDS + ARR + IST + REC + CFR) / 5
 
 ```
 
 **Alternate Weightings:**
 - Alternate weighting schemes MAY be explored for research purposes.
-- Alternate-weighted scores MUST NOT be labeled as “STRESS v0 ORI”.
-- Canonical equal-weighted ORI MUST always be computed and reported for STRESS v0 compliance.
+- Alternate-weighted scores MUST NOT be labeled as “STRESS v0 SRI”.
+- Canonical equal-weighted SRI MUST always be computed and reported for STRESS v0 compliance.
 
 ---
 
@@ -763,7 +763,7 @@ Each benchmark configuration MUST include:
 - at least 10 independent runs,
 - each run using an independently seeded stress realization (see §4.2).
 
-For each proxy and for ORI, implementations MUST report:
+For each proxy and for SRI, implementations MUST report:
 - mean value,
 - standard deviation,
 - 95% confidence interval.
@@ -897,9 +897,9 @@ For each independent run, implementations MUST record:
 - C_local (affected components)
 - Computed CFR value, or CFR = N/A if single-component workload (must state reason)
 
-**ORI**
-- ORI MUST be computed per run only if all five proxies are defined for that run.
-- If any proxy is N/A for a run, ORI for that run MUST be reported as N/A with the cause.
+**SRI**
+- SRI MUST be computed per run only if all five proxies are defined for that run.
+- If any proxy is N/A for a run, SRI for that run MUST be reported as N/A with the cause.
 
 Runs MUST NOT be discarded without disclosure.
 
@@ -909,7 +909,7 @@ Runs MUST NOT be discarded without disclosure.
 
 For each benchmark configuration, implementations MUST report:
 
-For each Behavioral Proxy and for ORI:
+For each Behavioral Proxy and for SRI:
 - mean value across runs where the metric is defined,
 - standard deviation,
 - 95% confidence interval,
@@ -917,8 +917,8 @@ For each Behavioral Proxy and for ORI:
 
 Aggregation MUST occur **after** per-run proxy computation.
 
-For ORI:
-- ORI aggregation MUST include only runs where all five proxies are defined.
+For SRI:
+- SRI aggregation MUST include only runs where all five proxies are defined.
 - The report MUST state the number of qualifying runs.
 
 If any runs are excluded for any reason:
@@ -966,13 +966,13 @@ If reproduction requires proprietary components, this MUST be disclosed.
 
 The following invalidate STRESS v0 compliance:
 
-- Reporting ORI without per-proxy values and supporting per-run records
+- Reporting SRI without per-proxy values and supporting per-run records
 - Reporting aggregated results without per-run metric records
 - Omitting seeds, stress parameters, or stress intensity levels (when applicable)
 - Renaming or reinterpreting Behavioral Proxies
 - Presenting experimental metrics as STRESS v0 scores
 - Selective reporting of favorable runs
-- Computing ORI from runs where any proxy is N/A without explicit disclosure
+- Computing SRI from runs where any proxy is N/A without explicit disclosure
 
 Results that violate these constraints MUST NOT be labeled as STRESS v0.
 

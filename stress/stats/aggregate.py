@@ -60,7 +60,7 @@ def summarize(values: List[Optional[float]]) -> SummaryStats:
     lo = m - z * se
     hi = m + z * se
 
-    # Clamp to [0,1] for normalized proxies/ORI
+    # Clamp to [0,1] for normalized proxies/SRI
     lo = max(0.0, min(1.0, lo))
     hi = max(0.0, min(1.0, hi))
 

@@ -16,7 +16,7 @@ It specifies:
 
 - Formal definitions of all Behavioral Proxies
 - Measurement procedures and normalization rules
-- Orbital Reliability Index (ORI) construction
+- Stress Resilience Index (SRI) construction
 - Statistical requirements for reproducibility
 - Explicit interpretation constraints
 
@@ -35,7 +35,7 @@ Let:
 - **S** = declared stress regime (SR-1 … SR-5 parameters)  
 - **Rᵢ** = independent test run *i*  
 - **BPⱼ** = Behavioral Proxy *j*, normalized to **[0,1]**  
-- **ORI ∈ [0,1]**
+- **SRI ∈ [0,1]**
 
 All Behavioral Proxies **MUST** be defined such that their values lie within **[0,1]**.
 
@@ -181,7 +181,7 @@ Components **MUST** be defined at a consistent abstraction level across all test
 
 ---
 
-## 5. Orbital Reliability Index (ORI)
+## 5. Stress Resilience Index (SRI)
 
 ### 5.1 Aggregation Formula
 
@@ -197,7 +197,7 @@ Canonical STRESS v0 weighting uses equal weights:
 
 ```
 
-ORI = (1 / 5) × Σ BPⱼ
+SRI = (1 / 5) × Σ BPⱼ
 
 ```
 
@@ -209,7 +209,7 @@ Alternate weightings **MAY** be used for exploratory analysis but **MUST NOT** b
 
 - Minimum of **10 independent test runs**
 - Report:
-  - Mean ORI
+  - Mean SRI
   - Standard deviation
   - 95% confidence interval
 
@@ -238,7 +238,7 @@ STRESS scores **MUST NOT** be used to:
 - Compare across stress regimes
 - Compare across workload classes
 
-ORI values are comparative indicators **only within declared constraints**.
+SRI values are comparative indicators **only within declared constraints**.
 
 ---
 

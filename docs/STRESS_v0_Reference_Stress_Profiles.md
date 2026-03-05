@@ -186,7 +186,7 @@ The key requirement is that any chosen parameterization is:
 - explicitly declared,
 - seeded where stochastic,
 - applied consistently across runs,
-- and disclosed alongside ORI results.
+- and disclosed alongside SRI results.
 
 #### SP-1 Example (Moderate Constraint)
 - **SR-1 (Radiation):** 0.001 faults/hour/GB (independent; seeded)
@@ -208,7 +208,7 @@ The key requirement is that any chosen parameterization is:
 
 - Stress profiles MUST be applied consistently across all runs  
 - Parameter changes invalidate comparisons  
-- Stress profiles MUST be disclosed alongside ORI results  
+- Stress profiles MUST be disclosed alongside SRI results  
 - Combining profiles is NOT permitted in STRESS v0  
 
 ---

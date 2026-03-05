@@ -145,14 +145,14 @@
   },
   "na_reasons": {
     "cfr": "C_total <= 1 (single-component workload); CFR not applicable.",
-    "ori": "ORI N/A because proxies N/A: ['cfr']"
+    "sri": "SRI N/A because proxies N/A: ['cfr']"
   },
   "proxies": {
     "arr": 0.0,
     "cfr": null,
     "gds": 0.20000000000000004,
     "ist": 1.0,
-    "ori": null,
+    "sri": null,
     "rec": 1.0
   },
   "run_id": "run-03",

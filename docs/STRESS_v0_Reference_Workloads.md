@@ -163,7 +163,7 @@ Observable signals SHOULD be derivable from external interfaces (e.g., exit code
 
 ## 8. Interpretation Constraints
 - STRESS scores MUST NOT be compared across different workload classes.
-- Workload ID and parameters MUST be disclosed alongside ORI results.
+- Workload ID and parameters MUST be disclosed alongside SRI results.
 - Optimizing systems specifically for a workload MUST be disclosed.
 
 ---

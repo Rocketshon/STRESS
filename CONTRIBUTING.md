@@ -1,6 +1,6 @@
-# Contributing to OCRB
+# Contributing to STRESS
 
-OCRB is a technical standard maintained by Obelus Labs LLC. Contributions are welcome, but v0 core definitions are intentionally strict.
+STRESS is a technical standard maintained by Obelus Labs LLC. Contributions are welcome, but v0 core definitions are intentionally strict.
 
 ## What We Accept
 - Bug reports and inconsistencies in existing specifications
@@ -9,7 +9,7 @@ OCRB is a technical standard maintained by Obelus Labs LLC. Contributions are we
 - Additional workloads or profiles (subject to versioning rules)
 
 ## What We Don’t Accept
-- Changes to OCRB v0 Behavioral Proxy definitions
+- Changes to STRESS v0 Behavioral Proxy definitions
 - New stress parameters (requires a major version increment)
 - Modifications that reduce reproducibility or comparability
 - “Optimization guidance” that turns the benchmark into a tuning target
