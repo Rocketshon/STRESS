@@ -31,3 +31,6 @@ Thumbs.db
 outputs/
 reports/
 artifacts/
+
+# Rust
+stress-ref/target/

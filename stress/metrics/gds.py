@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import List, Optional
 
@@ -69,8 +70,11 @@ def compute_gds(
     # If expected levels are declared, enforce coverage
     if expected_levels is not None:
         exp = [float(x) for x in expected_levels]
-        got = set(levels)
-        missing = [x for x in exp if x not in got]
+        # Use tolerance-based comparison to avoid float equality issues
+        missing = [
+            x for x in exp
+            if not any(math.isclose(x, g, rel_tol=1e-9) for g in levels)
+        ]
         if missing:
             return GDSResult(
                 gds=None,

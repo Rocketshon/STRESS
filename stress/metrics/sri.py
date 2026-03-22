@@ -16,15 +16,11 @@ def compute_sri(
     weights: Optional[Dict[str, float]] = None,
 ) -> SRIResult:
     """
-    SRI is the weighted aggregate of the five behavioral proxies.
-    v0 default: equal weights.
+    SRI = (sum of weighted proxies) * 100, producing a score on [0, 100].
 
-    Proxies expected keys:
-      gds, arr, ist, rec, cfr
+    Per spec v0.2: SRI = (GDS + ARR + IST + REC + CFR) / 5 × 100
 
-    Rule:
-      If any required proxy is N/A, SRI is N/A (must be disclosed).
-      (This keeps comparability intact.)
+    If any required proxy is N/A, SRI is N/A (must be disclosed).
     """
     if weights is None:
         weights = {"gds": 0.2, "arr": 0.2, "ist": 0.2, "rec": 0.2, "cfr": 0.2}
@@ -37,10 +33,13 @@ def compute_sri(
     if na:
         return SRIResult(sri=None, weights=weights, na_reason=f"SRI N/A because proxies N/A: {na}")
 
-    sri = 0.0
+    raw = 0.0
     for k, w in weights.items():
-        sri += float(proxies[k]) * float(w)
+        raw += float(proxies[k]) * float(w)
 
-    # Numerical guardrail
-    sri = max(0.0, min(1.0, sri))
+    # Scale to [0, 100] per spec v0.2
+    sri = raw * 100.0
+
+    # Clamp to [0, 100]
+    sri = max(0.0, min(100.0, sri))
     return SRIResult(sri=sri, weights=weights, na_reason=None)

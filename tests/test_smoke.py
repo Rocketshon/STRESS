@@ -17,4 +17,4 @@ def test_sri_computation():
         }
     )
 
-    assert sri.sri == 1.0
+    assert sri.sri == 100.0

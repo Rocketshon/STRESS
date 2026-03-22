@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 
 @dataclass(frozen=True)
@@ -20,7 +20,6 @@ def _mean(xs: List[float]) -> float:
 
 
 def _std_sample(xs: List[float]) -> float:
-    # sample std dev (n-1)
     n = len(xs)
     if n < 2:
         return 0.0
@@ -33,8 +32,8 @@ def summarize(values: List[Optional[float]]) -> SummaryStats:
     """
     Compute mean/std/95% CI over included values.
     N/A values are excluded but counted.
-    95% CI uses normal approximation: mean ± 1.96 * (std/sqrt(n))
-    (Acceptable for v0; can be swapped later as "valid deviation" if disclosed.)
+    95% CI uses normal approximation: mean +/- 1.96 * (std/sqrt(n))
+    CI is reported faithfully without clamping.
     """
     included = [v for v in values if v is not None]
     n_na = sum(1 for v in values if v is None)
@@ -59,10 +58,6 @@ def summarize(values: List[Optional[float]]) -> SummaryStats:
     z = 1.96
     lo = m - z * se
     hi = m + z * se
-
-    # Clamp to [0,1] for normalized proxies/SRI
-    lo = max(0.0, min(1.0, lo))
-    hi = max(0.0, min(1.0, hi))
 
     return SummaryStats(
         mean=m, std=s, ci95_low=lo, ci95_high=hi,
